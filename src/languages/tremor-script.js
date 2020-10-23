@@ -19,8 +19,6 @@ Description: Tremor is an event processing system with embedded domain languages
 Website: https://www.tremor.rs
 */
 
-var module = module ? module: {};
-
 function defineTremorGrammar(hljs) {
   const BRACED_SUBST = {
     className: 'subst',

@@ -20,4 +20,4 @@ const main = {};
 main.defineTremorGrammar = defineTremorGrammar;
 main.defineTrickleGrammar = defineTrickleGrammar;
 
-module.exports = main;
+export default main;
