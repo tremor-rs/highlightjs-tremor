@@ -18,3 +18,13 @@ $ npm run build
 ```
 
 Then use one of the generated bundles in `dist` as appropriate.
+
+
+## Testing
+
+```
+npm run build
+python3 -m http.server
+```
+
+and open http://0.0.0.0:8000/test.html

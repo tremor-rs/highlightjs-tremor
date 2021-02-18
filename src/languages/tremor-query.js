@@ -22,12 +22,11 @@ Website: https://www.tremor.rs
 function defineTrickleGrammar(hljs) {
   const BRACED_SUBST = {
     className: 'subst',
-    subLanguage: 'tremor',
-    variants: [{
-      begin: '\\{',
-      end: '}'
-    }],
-    keywords: 'true false null this is new super',
+    contains: [
+      {subLanguage: 'tremor',}
+    ],
+    begin: '#\\{',
+    end: '}'
   };
 
   const KEYWORDS = {
@@ -36,7 +35,9 @@ function defineTrickleGrammar(hljs) {
       'merge fn use mod recur with as intrinsic select create define operator script from into with group by window ' +
       'stream tumbling sliding where having set each',
     meta:
-      'event args state window group and or not',
+          // context-sensitive keywords
+      'event args state window group and or not' +
+      ' binary integer unsigned signed big little',
     literal:
       'false true null'
   };
@@ -69,12 +70,12 @@ function defineTrickleGrammar(hljs) {
 
   var DOLLAR_IDENT = {
     className: 'meta',
-    begin: '\\$[a-zA-Z0-9]+'
+    begin: '\\$[a-zA-Z0-9][a-zA-Z0-9_]*'
   };
 
   var SIGNIFICANT_OPERATORS = {
     className: 'built_in',
-    begin: "(=>)|(~=)|~|\\|"
+    begin: "(=>)|(~=)|~"
   };
 
   return {
@@ -83,11 +84,11 @@ function defineTrickleGrammar(hljs) {
     keywords: KEYWORDS,
     case_insensitive: true,
     contains: [
+      SIGNIFICANT_OPERATORS,
       STRING,
       PRIMED_IDENT,
       DOLLAR_IDENT,
-      SIGNIFICANT_OPERATORS,
-      hljs.NUMBER_MODE,
+      hljs.C_NUMBER_MODE,
       hljs.COMMENT(
         '#+',
         '$', {

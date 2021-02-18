@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<script src="dist/highlightjs-tremor.cjs.js"></script>
+<script type='text/javascript'>
+hljs.registerLanguage('tremor', window.defineTremorGrammar);
+hljs.registerLanguage('trickle', window.defineTrickleGrammar);
+// This disables highlight from guessing the language upon a syntax or other error
+hljs.configure({languages:[]});
+hljs.initHighlightingOnLoad();
+$(document).ready(function() {
+   $('#myBlock').each(function(i, e) {hljs.highlightBlock(e)});
+});
+</script>
+</head>
+<body>
+<div id="myBlock">
+
+<!-- BEGIN -->
+
+<pre>
+    <code class='tremor'>
+        # this is a comment
+        "this is a {1} string with #{1 + 1} interpolation but \#{3} squigglies and a # in it";
+        1.2;
+        << 1,2:4,3:8/signed-little-integer,<<1>>/binary,"snot"/binary >>;
+        let snot = 1 + "badger" < flork > snork >>= $bogo;
+        1e-10 << 3;
+        0x100;
+        << 1,2,3 >>;
+        {
+            "record": "field"
+        };
+        [1, 2, 3];
+        function(args, event);    </code>
+</pre>
+<!-- END -->
+
+</div>
+</body>
+</html>
+
+Message #core
