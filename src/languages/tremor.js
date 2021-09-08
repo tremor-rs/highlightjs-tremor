@@ -14,10 +14,12 @@
 
 import defineTremorGrammar from './tremor-script.js'
 import defineTrickleGrammar from './tremor-query.js'
+import defineTroyGrammar from './tremor-deploy.js'
 
 const main = {};
 
 main.defineTremorGrammar = defineTremorGrammar;
 main.defineTrickleGrammar = defineTrickleGrammar;
+main.defineTroyGrammar = defineTroyGrammar;
 
 export default main;
