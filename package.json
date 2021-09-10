@@ -34,7 +34,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "highlight.js": "^10.1.0",
+    "highlight.js": "^10.7.3",
     "mocha": "^6.2.3",
     "rimraf": "^3.0.0",
     "rollup": "^1.27.1",

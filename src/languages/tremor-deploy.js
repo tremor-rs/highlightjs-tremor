@@ -13,17 +13,17 @@
 // limitations under the License.
 
 /*
-Language: tremor-script
+Language: tremor-deploy
 Author: Darach Ennis <darach@gmail.com>
-Description: Tremor is an event processing system with embedded domain languages. Tremor-script is the core language DSL.
+Description: Tremor is an event processing system with embedded domain languages. Tremor-deploy is the deployment language DSL. Tremor-deply embeds tremor-query.
 Website: https://www.tremor.rs
 */
 
-function defineTremorGrammar(hljs) {
+function defineTroyGrammar(hljs) {
   const BRACED_SUBST = {
     className: 'subst',
     contains: [
-      {subLanguage: 'tremor',}
+      {subLanguage: 'troy',}
     ],
     begin: '#\\{',
     end: '}'
@@ -31,16 +31,16 @@ function defineTremorGrammar(hljs) {
 
   const KEYWORDS = {
     keyword:
-      // regular syntactic keywords
-      'emit drop const let for match of case when default end patch insert update upsert erase move copy present absent' +
-      ' merge fn use mod recur with as intrinsic',
+      'connector pipeline flow config links connect to deploy ' +
+      'emit drop const let for match of case when default end patch insert update erase move copy present absent ' +
+      'merge fn use mod recur with as intrinsic select create define operator script from into with group by window ' +
+      'stream tumbling sliding where having set each',
     meta:
-      // context-sensitive keywords
+          // context-sensitive keywords
       'event args state window group and or not' +
-      // binary
       ' binary integer unsigned signed big little',
     literal:
-      'false true null',
+      'false true null'
   };
 
   const STRING = {
@@ -59,7 +59,6 @@ function defineTremorGrammar(hljs) {
       },
     ]
   };
-
   BRACED_SUBST.contains = [
     hljs.C_NUMBER_MODE, STRING
   ];
@@ -81,8 +80,8 @@ function defineTremorGrammar(hljs) {
   };
 
   return {
-    name: "tremor-script",
-    aliases: ["tremor"],
+    name: "tremor-deploy",
+    aliases: ["troy"],
     keywords: KEYWORDS,
     case_insensitive: true,
     contains: [
@@ -106,4 +105,4 @@ function defineTremorGrammar(hljs) {
   };
 }
 
-export default defineTremorGrammar;
+export default defineTroyGrammar;
